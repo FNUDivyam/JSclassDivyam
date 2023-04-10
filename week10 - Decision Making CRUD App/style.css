@@ -1,0 +1,27 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.error {
+    color: red;
+}
+
+.centered {
+    margin: 0 auto;
+    width: 60%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+.t-center {
+  text-align: center;
+}
+
+  label {
+    display: inline-block;
+  }
+
+.pr-2 {
+  padding-right: 30px;
+}

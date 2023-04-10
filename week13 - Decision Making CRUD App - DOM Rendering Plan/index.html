@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision CRUD app</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <form id="form-input" class="t-center">
+            <fieldset class="centered">
+                <h1 class="t-center">Decision Making CRUD app</h1>
+                <h2 class="t-center">For Divyam's Morning Tasks</h2>
+                <div style="justify-content: space-between;">
+                    <label for="" class="pr-2">Current Time
+                        <select name="currentTime" required>
+                            <option value=""></option>
+                            <option value=5>5am</option>
+                            <option value=6>6am</option>
+                            <option value=7>7am</option>
+                            <option value=8>8am</option>
+                            <option value=9>9am</option>
+                        </select>
+                    </label>
+
+                    <label for="" class="pr-2">Gym Time
+                        <select name="gymTime" required>
+                            <option value=""></option>
+                            <option value=7>7am</option>
+                            <option value=8>8am</option>
+                            <option value=9>9am</option>
+                        </select>
+                    </label>
+                    
+                    <label for="" class="pr-2">Day of the Week
+                        <select name="day" required>
+                            <option value=""></option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label for="">Driving
+                        <input name="myTurnToDrive" type="checkbox" checked />
+                    </label>
+
+                    <label for="">Unplanned Event
+                        <input name="unplannedEvent" type="checkbox" />
+                    </label>
+                </div>
+                <div><button>Submit</button></div>
+            </fieldset>
+            <div id="error-message"></div>
+        </form>
+        <div id="output"></div>
+    </main>
+</body>
+
+</html>
