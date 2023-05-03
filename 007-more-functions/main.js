@@ -8,10 +8,12 @@ const updateDOM = (input) => {
 }
 
 const trackMPGCost = (miles, gallons, price = 3.79) => {
-  const MPG = miles/gallons 
+  const MPG = Math.round(miles/gallons) 
   const tripCost = MPG * price
   myArr.push(MPG, tripCost)
+  updateDOM(`Miles per gallon is ${MPG} and trip cost is ${tripCost}`)
 }
 
-updateDOM(trackMPGCost(321, 11, 5.40))
-updateDOM(trackMPGCost(320, 12, 4.32))
+trackMPGCost(300, 10, 5.40)
+trackMPGCost(320, 12, 5)
+updateDOM(`myArr is [${myArr}]`)
