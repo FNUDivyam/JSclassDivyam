@@ -1,3 +1,7 @@
+const FORM = document.getElementById("form-input")
+
+
+
 const MY_MPG = []
 const MY_TRIP_COST = []
 
@@ -37,10 +41,14 @@ const calculateMPGAndTripCostAvg = () => {
   updateDOM(`Average Trip Cost is ${avgCost}`)
 }
 
-trackMPGAndCost(360, 15, 5.40)
-trackMPGAndCost(320, 12, 5)
-trackMPGAndCost(100, 7, 4.40)
-trackMPGAndCost(600, 24, 5.70)
-trackMPGAndCost(50, 2, 3.40)
-trackMPGAndCost(320, 12, 5)
-calculateMPGAndTripCostAvg()
+FORM.addEventListener('submit', (e) => {
+  console.log(e)
+})
+
+// trackMPGAndCost(360, 15, 5.40)
+// trackMPGAndCost(320, 12, 5)
+// trackMPGAndCost(100, 7, 4.40)
+// trackMPGAndCost(600, 24, 5.70)
+// trackMPGAndCost(50, 2, 3.40)
+// trackMPGAndCost(320, 12, 5)
+// calculateMPGAndTripCostAvg()
