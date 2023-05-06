@@ -42,7 +42,11 @@ const calculateMPGAndTripCostAvg = () => {
 }
 
 FORM.addEventListener('submit', (e) => {
-  console.log(e)
+  e.preventDefault()
+  const miles = parseInt(e.target.miles.value)
+  const gallons = parseInt(e.target.gallons.value)
+  const price = parseInt(e.target.price.value)
+  trackMPGAndCost(miles, gallons, price)
 })
 
 // trackMPGAndCost(360, 15, 5.40)
