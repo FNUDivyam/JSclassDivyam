@@ -20,3 +20,18 @@ const myObj = {
 const greeting = myObj.myGreeting("divyam")
 console.log(greeting)
 
+const catObj = {
+  name: "kat",
+  awake: true, 
+  age: 1,
+  routines: ['hiding', 'playing', 'hunting', 'eating'],
+  logRoutine: function() {
+    for(let i = 0; i < this.routines.length; i++) {
+      console.log(`${this.name} is ${this.routines[i]}`)
+    }
+    this.awake = false
+    console.log(`is ${this.name} awake? ${this.awake}`)
+  }
+}
+
+catObj.logRoutine()
