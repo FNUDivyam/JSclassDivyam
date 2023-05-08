@@ -7,13 +7,13 @@ const myNumber = 9
 const myObj = {
   name: 'duke',
   age: 3,
-  hobbies: ['playing', 'running', 'sleeping'],
+  hobbies: ['play', 'run', 'sleep'],
   parents: {
     mother: 'darcy',
     father: 'damien'
   },
   myGreeting: function(name) {
-    return `what is UP ${name}`
+    return `${this.name} who loves to ${this.hobbies[0]}, says what is UP ${name}`
   }
 }
 
