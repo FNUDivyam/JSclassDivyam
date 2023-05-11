@@ -11,6 +11,13 @@ const updateDOM = (input) => {
   divEl.appendChild(p)
 }
 
+const updateAVG = (input) => {
+  const divEl = document.querySelector("#avg")
+  const p = document.createElement("p")
+  p.textContent = input
+  divEl.appendChild(p)
+}
+
 const trackMPGAndCost = (miles, gallons, price = 3.79) => {
   const MPG = Math.round(miles/gallons) 
   const tripCost = Math.round(MPG * price)
@@ -34,10 +41,10 @@ const calculateMPGAndTripCostAvg = () => {
   let totalCost = calculateSUM(MY_TRIP_COST)
   
   const avgMPG = Math.round(totalMPG / MY_MPG.length) 
-  updateDOM(`Average MPG is ${avgMPG}`)
+  updateAVG(`Average MPG is ${avgMPG}`)
 
   const avgCost = Math.round(totalCost / MY_TRIP_COST.length)
-  updateDOM(`Average Trip Cost is ${avgCost}`)
+  updateAVG(`Average Trip Cost is ${avgCost}`)
 }
 
 FORM.addEventListener('submit', (e) => {
@@ -47,14 +54,20 @@ FORM.addEventListener('submit', (e) => {
   const gallons = parseInt(e.target.gallons.value)
   const price = parseInt(e.target.price.value)
   
-  if(miles === 0) {
+  if(miles === 0 || price === 0 || gallons === 0) {
     errMsg.push("Make sure you input value greater than zero")
   }
   
+  if(price > 1000) {
+    errMsg.push("Really!!!!? I think this is an error...Try again")
+  }
+
   if (errMsg.length > 0) {
     ERR.textContent = errMsg 
   } else {
+    ERR.textContent = ""
     trackMPGAndCost(miles, gallons, price)
+    calculateMPGAndTripCostAvg()
   }
 })
 
