@@ -73,7 +73,6 @@ function renderTableHeader(tbl) {
   tbl.appendChild(tr)
 }
 
-
 function renderTable() {
   const tbl = document.createElement("table")
   renderTableHeader(tbl)
@@ -84,6 +83,14 @@ function renderTable() {
       td.textContent = obj[key]
       tr.appendChild(td)
     }
+    const btnTD = document.createElement("td")
+    const editBtn = document.createElement("button")
+    editBtn.textContent = 'edit'
+    const delBtn = document.createElement("button")
+    delBtn.textContent = 'delete'
+    btnTD.appendChild(editBtn)
+    btnTD.appendChild(delBtn)
+    tr.appendChild(btnTD)
     tbl.appendChild(tr)
   })
   TBL_OUTPUT.appendChild(tbl)

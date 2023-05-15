@@ -18,3 +18,6 @@ not sure, this is confusing, I don't have this issue
 
 ### saw the solution
 ah, solution makes sense, order is based on how it got created
+
+## how can we fix the Rendering table issues at the end of first assignment in week 10
+hmm, delete all html inside div#table-output  and recreate, just like how err message gets cleared everytime
