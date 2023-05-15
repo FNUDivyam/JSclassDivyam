@@ -65,7 +65,6 @@ function isFormValid(miles, gallons, price) {
 function renderTable() {
   const tbl = document.createElement("table")
   const headings = ["Miles Driven:", "Gallons Used:", "Price Paid:", "Trip MPG:", "Trip Cost:", "Edit/Delete:"]
-
   const tr = document.createElement("tr")
   headings.forEach(function(heading) {
     let th = document.createElement("th")
@@ -73,7 +72,15 @@ function renderTable() {
     tr.appendChild(th)
   })
   tbl.appendChild(tr)
-
+  MY_DATA.forEach(function(obj) {
+    const tr = document.createElement("tr")
+    for(key in obj) {
+      let td = document.createElement("td")
+      td.textContent = obj[key]
+      tr.appendChild(td)
+    }
+    tbl.appendChild(tr)
+  })
   TBL_OUTPUT.appendChild(tbl)
 }
 
@@ -88,8 +95,8 @@ FORM.addEventListener('submit', function(e) {
     ERR.textContent = ""
     AVG.textContent = ""
     const dataObj = trackMPGAndCost(miles, gallons, price)
-    renderTable()
     MY_DATA.push(dataObj)
+    renderTable()
     calculateMPGAndTripCostAvg()
   }
   FORM.reset()

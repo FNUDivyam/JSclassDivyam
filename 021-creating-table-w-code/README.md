@@ -12,3 +12,9 @@ inside trackMPGAndCost function
 ## how you think we would render the input data into the table.
 same way we rendered the table header
 loop through MY_DATA and create rows with corresponding values
+
+## how to fix order issue
+not sure, this is confusing, I don't have this issue
+
+### saw the solution
+ah, solution makes sense, order is based on how it got created
