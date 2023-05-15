@@ -12,15 +12,15 @@ const updateDOM = (input, id) => {
 
 const trackMPGAndCost = (miles, gallons, price = 3.79) => {
   const mpg = Math.round(miles/gallons) 
-  const tripCost = Math.round(mpg * price)
-  MY_DATA.push({
+  const tripCost = Math.round(gallons * price)
+  updateDOM(`Miles per gallon is ${mpg} and trip cost is ${tripCost}`, "#output")
+  return {
     miles: miles,
     gallons: gallons,
     price: price,
     mpg: mpg,
     tripCost: tripCost
-  })
-  updateDOM(`Miles per gallon is ${mpg} and trip cost is ${tripCost}`, "#output")
+  }
 }
 
 const calculateSUM = (arr, key) => {
@@ -44,13 +44,8 @@ const calculateMPGAndTripCostAvg = () => {
   updateDOM(`Average Trip Cost is ${avgCost}`, "#avg")
 }
 
-FORM.addEventListener('submit', (e) => {
-  e.preventDefault()
+const isFormValid = (miles, gallons, price) => {
   const errMsg = []
-  const miles = parseInt(e.target.miles.value)
-  const gallons = parseInt(e.target.gallons.value)
-  const price = parseInt(e.target.price.value)
-  
   if(miles === 0 || price === 0 || gallons === 0) {
     errMsg.push("Make sure you input value greater than zero")
   }
@@ -59,12 +54,26 @@ FORM.addEventListener('submit', (e) => {
     errMsg.push("Really!!!!? I think this is an error...Try again")
   }
 
-  if (errMsg.length > 0) {
+  if(errMsg.length > 0) {
     ERR.textContent = errMsg 
+    return false
   } else {
+    return true
+  }
+}
+
+FORM.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const miles = parseInt(e.target.miles.value)
+  const gallons = parseInt(e.target.gallons.value)
+  const price = parseInt(e.target.price.value)
+  
+  const isValid = isFormValid(miles, gallons, price)
+  if (isValid) {
     ERR.textContent = ""
     AVG.textContent = ""
-    trackMPGAndCost(miles, gallons, price)
+    const dataObj = trackMPGAndCost(miles, gallons, price)
+    MY_DATA.push(dataObj)
     calculateMPGAndTripCostAvg()
   }
   FORM.reset()
