@@ -1,6 +1,7 @@
 const FORM = document.getElementById("form-input")
 const ERR = document.getElementById("err")
 const AVG = document.getElementById("avg")
+const TBL_OUTPUT = document.getElementById("table-output")
 const MY_DATA = []
 
 function updateDOM(input, id) {
@@ -61,6 +62,21 @@ function isFormValid(miles, gallons, price) {
   }
 }
 
+function renderTable() {
+  const tbl = document.createElement("table")
+  const headings = ["Miles Driven:", "Gallons Used:", "Price Paid:", "Trip MPG:", "Trip Cost:", "Edit/Delete:"]
+
+  const tr = document.createElement("tr")
+  headings.forEach(function(heading) {
+    let th = document.createElement("th")
+    th.textContent = heading
+    tr.appendChild(th)
+  })
+  tbl.appendChild(tr)
+
+  TBL_OUTPUT.appendChild(tbl)
+}
+
 FORM.addEventListener('submit', function(e) {
   e.preventDefault()
   const miles = parseInt(e.target.miles.value)
@@ -72,6 +88,7 @@ FORM.addEventListener('submit', function(e) {
     ERR.textContent = ""
     AVG.textContent = ""
     const dataObj = trackMPGAndCost(miles, gallons, price)
+    renderTable()
     MY_DATA.push(dataObj)
     calculateMPGAndTripCostAvg()
   }
