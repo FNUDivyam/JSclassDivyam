@@ -62,8 +62,7 @@ function isFormValid(miles, gallons, price) {
   }
 }
 
-function renderTable() {
-  const tbl = document.createElement("table")
+function renderTableHeader(tbl) {
   const headings = ["Miles Driven:", "Gallons Used:", "Price Paid:", "Trip MPG:", "Trip Cost:", "Edit/Delete:"]
   const tr = document.createElement("tr")
   headings.forEach(function(heading) {
@@ -72,6 +71,12 @@ function renderTable() {
     tr.appendChild(th)
   })
   tbl.appendChild(tr)
+}
+
+
+function renderTable() {
+  const tbl = document.createElement("table")
+  renderTableHeader(tbl)
   MY_DATA.forEach(function(obj) {
     const tr = document.createElement("tr")
     for(key in obj) {
