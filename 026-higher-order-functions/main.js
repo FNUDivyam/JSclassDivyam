@@ -1,6 +1,5 @@
-import { renderTable } from "./render.js"
-import { getTripData, saveTripData } from "./storage.js"
-import { updateDOM } from "./dom.js"
+import { renderTable, calculateMPGAndTripCostAvg, updateDOM } from "./render.js";
+import { getTripData, saveTripData } from "./storage.js";
 
 const FORM = document.getElementById("form-input");
 const ERR = document.getElementById("err");
@@ -8,14 +7,15 @@ const AVG = document.getElementById("avg");
 
 const MY_DATA = getTripData();
 renderTable(MY_DATA);
+calculateMPGAndTripCostAvg(MY_DATA);
 
 function trackMPGAndCost(miles, gallons, price = 3.79) {
   const mpg = Number((miles / gallons).toFixed(2));
   const tripCost = Number((gallons * price).toFixed(2));
-  updateDOM(
-    `Miles per gallon is ${mpg} and trip cost is ${tripCost}`,
-    "#output"
-  );
+  // updateDOM(
+  //   `Miles per gallon is ${mpg} and trip cost is ${tripCost}`,
+  //   "#output"
+  // );
   return {
     miles: miles,
     gallons: gallons,
@@ -23,35 +23,6 @@ function trackMPGAndCost(miles, gallons, price = 3.79) {
     mpg: mpg,
     tripCost: tripCost,
   };
-}
-
-function calculateSUM(arr, key) {
-  let sum = 0;
-
-  for (const item of arr) {
-    sum += item[key];
-  }
-
-  return sum;
-}
-
-function calculateMPGAndTripCostAvg() {
-  let totalMPG = calculateSUM(MY_DATA, "mpg");
-  let totalCost = calculateSUM(MY_DATA, "tripCost");
-
-
-  const sums = MY_DATA.reduce((sum, obj) => {
-    return {
-      mpg: sum.mpg + obj.mpg,
-      tripCost: sum.tripCost + obj.tripCost
-    }
-  })
-
-  const avgMPG = Number((totalMPG / MY_DATA.length).toFixed(2));
-  updateDOM(`Average MPG is ${avgMPG}`, "#avg");
-
-  const avgCost = Number((totalCost / MY_DATA.length).toFixed(2));
-  updateDOM(`Average Trip Cost is ${avgCost}`, "#avg");
 }
 
 function isFormValid(miles, gallons, price) {
@@ -81,13 +52,13 @@ FORM.addEventListener("submit", function (e) {
   if (isValid) {
     ERR.textContent = "";
     AVG.textContent = "";
-    const dataObj = trackMPGAndCost(miles, gallons, price); 
+    const dataObj = trackMPGAndCost(miles, gallons, price);
     console.log(MY_DATA, dataObj);
     MY_DATA.push(dataObj);
     console.log(MY_DATA, dataObj);
     saveTripData(MY_DATA);
     renderTable(MY_DATA);
-    calculateMPGAndTripCostAvg();
+    calculateMPGAndTripCostAvg(MY_DATA);
   }
   FORM.reset();
 });
