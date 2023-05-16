@@ -36,4 +36,34 @@ function getWeather() {
   
   getWeather()
     .then(getWeatherIcon)
-    .then(onSuccess, onError)
+    .then(onSuccess)
+    .catch(onError)
+  
+  
+  function fun1() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('404')
+      }, 100)
+    })
+  }
+  
+  function fun2() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('☀️')
+      }, 100)
+    })
+  }
+  
+  function onFinally() {
+    console.log("finally")
+  }
+  
+  
+  fun1()
+    .then(fun2)
+    .then(onSuccess)
+    .catch(onError)
+    .finally(onFinally)
+  
