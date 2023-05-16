@@ -91,7 +91,9 @@ function renderEditDelBtn(tr, index) {
   delBtn.textContent = "delete";
 
   editBtn.addEventListener('click', function(e) {
-    console.log(index);
+    FORM.miles.value = MY_DATA[index].miles
+    FORM.gallons.value = MY_DATA[index].gallons
+    FORM.price.value = MY_DATA[index].price
   })
 
   delBtn.addEventListener('click', function(e) {
