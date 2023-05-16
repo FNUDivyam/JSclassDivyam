@@ -7,20 +7,20 @@ function updateDOM(input, id) {
   divEl.appendChild(p);
 }
 
-function startWorkout(time, initialUpdate, finalUpdate) {
-  initialUpdate()
-  setTimeout(() => {
-    finalUpdate()
-  }, time*60*1000)
+function startWorkout(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, time*60*1000)
+  });
 }
 
 function acceptWorkout(type, reps, time) {
-  startWorkout(time, () => {
-    updateDOM(`type=${type}, reps=${reps} time=${time}`, 'output')
-  },
-  () => {
-    updateDOM('done', 'output') 
-  })
+  updateDOM(`type=${type}, reps=${reps} time=${time}`, 'output')
+  startWorkout(time)
+    .then(() => {
+      updateDOM('done', 'output') 
+    })
 }
 
 formEl.addEventListener("submit", function(e) {
