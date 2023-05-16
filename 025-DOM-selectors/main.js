@@ -10,8 +10,8 @@ const MY_DATA = getTripData();
 renderTable(MY_DATA);
 
 function trackMPGAndCost(miles, gallons, price = 3.79) {
-  const mpg = Math.round(miles / gallons);
-  const tripCost = Math.round(gallons * price);
+  const mpg = Number((miles / gallons).toFixed(2));
+  const tripCost = Number((gallons * price).toFixed(2));
   updateDOM(
     `Miles per gallon is ${mpg} and trip cost is ${tripCost}`,
     "#output"
@@ -39,10 +39,10 @@ function calculateMPGAndTripCostAvg() {
   let totalMPG = calculateSUM(MY_DATA, "mpg");
   let totalCost = calculateSUM(MY_DATA, "tripCost");
 
-  const avgMPG = Math.round(totalMPG / MY_DATA.length);
+  const avgMPG = Number((totalMPG / MY_DATA.length).toFixed(2));
   updateDOM(`Average MPG is ${avgMPG}`, "#avg");
 
-  const avgCost = Math.round(totalCost / MY_DATA.length);
+  const avgCost = Number((totalCost / MY_DATA.length).toFixed(2));
   updateDOM(`Average Trip Cost is ${avgCost}`, "#avg");
 }
 
@@ -65,9 +65,9 @@ function isFormValid(miles, gallons, price) {
 
 FORM.addEventListener("submit", function (e) {
   e.preventDefault();
-  const miles = (e.target.miles.value);
-  const gallons = (e.target.gallons.value);
-  const price = (e.target.price.value);
+  const miles = parseFloat(e.target.miles.value);
+  const gallons = parseFloat(e.target.gallons.value);
+  const price = parseFloat(e.target.price.value);
 
   const isValid = isFormValid(miles, gallons, price);
   if (isValid) {
