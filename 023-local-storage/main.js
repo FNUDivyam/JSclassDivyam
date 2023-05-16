@@ -2,7 +2,22 @@ const FORM = document.getElementById("form-input");
 const ERR = document.getElementById("err");
 const AVG = document.getElementById("avg");
 const TBL_OUTPUT = document.getElementById("table-output");
-const MY_DATA = [];
+
+function getTripData() {
+  const tripDataJSON = localStorage.getItem("tripData");
+  if (tripDataJSON !== null) {
+    return JSON.parse(tripDataJSON);
+  } else {
+    return [];
+  }
+}
+
+function saveTripData() {
+  localStorage.setItem("tripData", JSON.stringify(MY_DATA));
+}
+
+const MY_DATA = getTripData();
+renderTable();
 
 function updateDOM(input, id) {
   const divEl = document.querySelector(id);
@@ -90,18 +105,20 @@ function renderEditDelBtn(tr, index) {
   const delBtn = document.createElement("button");
   delBtn.textContent = "delete";
 
-  editBtn.addEventListener('click', function(e) {
-    FORM.miles.value = MY_DATA[index].miles
-    FORM.gallons.value = MY_DATA[index].gallons
-    FORM.price.value = MY_DATA[index].price
-    MY_DATA.splice(index, 1)
-  })
+  editBtn.addEventListener("click", function (e) {
+    FORM.miles.value = MY_DATA[index].miles;
+    FORM.gallons.value = MY_DATA[index].gallons;
+    FORM.price.value = MY_DATA[index].price;
+    MY_DATA.splice(index, 1);
+    saveTripData();
+  });
 
-  delBtn.addEventListener('click', function(e) {
-    MY_DATA.splice(index, 1)
+  delBtn.addEventListener("click", function (e) {
+    MY_DATA.splice(index, 1);
     TBL_OUTPUT.innerHTML = "";
-    renderTable()
-  })
+    renderTable();
+    saveTripData();
+  });
 
   td.appendChild(editBtn);
   td.appendChild(delBtn);
@@ -111,7 +128,7 @@ function renderEditDelBtn(tr, index) {
 function renderTable() {
   TBL_OUTPUT.innerHTML = "";
   const tbl = document.createElement("table");
-  if(MY_DATA.length !== 0) {
+  if (MY_DATA.length !== 0) {
     renderTableHeader(tbl);
     MY_DATA.forEach(function (obj, index) {
       const tr = document.createElement("tr");
@@ -139,6 +156,7 @@ FORM.addEventListener("submit", function (e) {
     AVG.textContent = "";
     const dataObj = trackMPGAndCost(miles, gallons, price);
     MY_DATA.push(dataObj);
+    saveTripData();
     renderTable();
     calculateMPGAndTripCostAvg();
   }
