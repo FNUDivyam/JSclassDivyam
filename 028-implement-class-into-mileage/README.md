@@ -15,3 +15,8 @@ I think it might be a good idea to not use _ here,
 as you mentioned in the video.
 But I get the point of the underscore a bit, but not 
 completely
+
+## why did you not write methods into the class
+one of these two
+because we are refactoring step by step
+because it was a choice, no particular reason
