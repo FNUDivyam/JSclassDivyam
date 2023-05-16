@@ -99,6 +99,7 @@ function renderEditDelBtn(tr, index) {
 
   delBtn.addEventListener('click', function(e) {
     MY_DATA.splice(index, 1)
+    TBL_OUTPUT.innerHTML = "";
     renderTable()
   })
 
@@ -110,19 +111,20 @@ function renderEditDelBtn(tr, index) {
 function renderTable() {
   TBL_OUTPUT.innerHTML = "";
   const tbl = document.createElement("table");
-
-  renderTableHeader(tbl);
-  MY_DATA.forEach(function (obj, index) {
-    const tr = document.createElement("tr");
-    for (key in obj) {
-      let td = document.createElement("td");
-      td.textContent = obj[key];
-      tr.appendChild(td);
-    }
-    renderEditDelBtn(tr, index);
-    tbl.appendChild(tr);
-  });
-  TBL_OUTPUT.appendChild(tbl);
+  if(MY_DATA.length !== 0) {
+    renderTableHeader(tbl);
+    MY_DATA.forEach(function (obj, index) {
+      const tr = document.createElement("tr");
+      for (key in obj) {
+        let td = document.createElement("td");
+        td.textContent = obj[key];
+        tr.appendChild(td);
+      }
+      renderEditDelBtn(tr, index);
+      tbl.appendChild(tr);
+    });
+    TBL_OUTPUT.appendChild(tbl);
+  }
 }
 
 FORM.addEventListener("submit", function (e) {
