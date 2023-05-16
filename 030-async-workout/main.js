@@ -15,12 +15,17 @@ function startWorkout(time) {
   });
 }
 
+function onError(error) {
+  console.log(`Error ${error}`)
+}
+
 function acceptWorkout(type, reps, time) {
   updateDOM(`type=${type}, reps=${reps} time=${time}`, 'output')
   startWorkout(time)
     .then(() => {
       updateDOM('done', 'output') 
     })
+    .catch(onError)
 }
 
 formEl.addEventListener("submit", function(e) {
