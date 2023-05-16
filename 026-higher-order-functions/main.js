@@ -39,6 +39,14 @@ function calculateMPGAndTripCostAvg() {
   let totalMPG = calculateSUM(MY_DATA, "mpg");
   let totalCost = calculateSUM(MY_DATA, "tripCost");
 
+
+  const sums = MY_DATA.reduce((sum, obj) => {
+    return {
+      mpg: sum.mpg + obj.mpg,
+      tripCost: sum.tripCost + obj.tripCost
+    }
+  })
+
   const avgMPG = Number((totalMPG / MY_DATA.length).toFixed(2));
   updateDOM(`Average MPG is ${avgMPG}`, "#avg");
 
