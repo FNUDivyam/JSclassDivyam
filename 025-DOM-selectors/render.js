@@ -33,6 +33,10 @@ function renderEditDelBtn(MY_DATA, tr, index) {
     FORM.gallons.value = MY_DATA[index].gallons;
     FORM.price.value = MY_DATA[index].price;
     MY_DATA.splice(index, 1);
+    const disable_btns = document.querySelectorAll(".tbl-btn")
+    disable_btns.forEach(function(btn) {
+      btn.setAttribute('disabled', true)
+    })
   });
 
   delBtn.addEventListener("click", function (e) {
@@ -40,6 +44,9 @@ function renderEditDelBtn(MY_DATA, tr, index) {
     renderTable(MY_DATA);
     saveTripData(MY_DATA);
   });
+
+  editBtn.classList.add("tbl-btn")
+  delBtn.classList.add("tbl-btn")
 
   td.appendChild(editBtn);
   td.appendChild(delBtn);

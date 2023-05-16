@@ -8,3 +8,7 @@ it seems to be working but not sure about this.
 just before the end of renderTables()
 querySelectorAll or getElementsByTagName
 can be used, but not sure where to get the index
+
+### I see the issue with my proposed soulution
+I didn't think of putting the disabled code inside the edit buttons click evenListener,
+but Once I saw your solution video it "clicked" for me.
