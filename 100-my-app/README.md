@@ -5,4 +5,13 @@
 2. hunger Level
 3. name of the food
 
-if the food is one of my favorite food, I'll eat a bit even if I'm not hungry, otherwise if I'm hungry it'll depend on my hungerlevel(on a scale of 1-100)
+
+# Week #13 
+
+## Render Plan
+I want to output like a list
+each item in the list will have a border to separate
+
+inputs will be in the first line as h5
+and output will be in the next line as h2
+edit and delete button will be below the output
