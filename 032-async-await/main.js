@@ -1,14 +1,7 @@
-function getData() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-        resolve(46)
-        }, 1)
-    })
-}
-
 async function start() {
-    const result = await getData()
-    console.log(result)
+    const response = await fetch("https://api.weather.gov/gridpoints/HNX/53,100/forecast")
+    const result = await response.json()
+    console.log(result.properties.periods[0].shortForecast)
 }
 
 start()
