@@ -3,7 +3,6 @@ import { getTripData, saveTripData } from "./storage.js";
 
 const FORM = document.getElementById("form-input");
 const ERR = document.getElementById("err");
-const AVG = document.getElementById("avg");
 
 const MY_DATA = getTripData();
 renderTable(MY_DATA);
@@ -51,7 +50,6 @@ FORM.addEventListener("submit", function (e) {
   const isValid = isFormValid(miles, gallons, price);
   if (isValid) {
     ERR.textContent = "";
-    AVG.textContent = "";
     const dataObj = trackMPGAndCost(miles, gallons, price);
     console.log(MY_DATA, dataObj);
     MY_DATA.push(dataObj);

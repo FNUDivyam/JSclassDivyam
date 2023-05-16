@@ -20,3 +20,7 @@ and when deleting
 also moved updateDOM into render.js to organise it a bit better
 
 along with some additional minor changes 
+
+## mine almost worked
+I didn't remove AVG and AVG.textContent="" from main.js
+until I saw the solution video
