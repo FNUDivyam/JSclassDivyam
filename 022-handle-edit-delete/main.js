@@ -94,10 +94,12 @@ function renderEditDelBtn(tr, index) {
     FORM.miles.value = MY_DATA[index].miles
     FORM.gallons.value = MY_DATA[index].gallons
     FORM.price.value = MY_DATA[index].price
+    MY_DATA.splice(index, 1)
   })
 
   delBtn.addEventListener('click', function(e) {
-
+    MY_DATA.splice(index, 1)
+    renderTable()
   })
 
   td.appendChild(editBtn);
