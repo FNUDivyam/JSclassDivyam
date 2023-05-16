@@ -1,20 +1,13 @@
 import { renderTable } from "./render.js"
 import { getTripData, saveTripData } from "./storage.js"
+import { updateDOM } from "./dom.js"
 
 const FORM = document.getElementById("form-input");
 const ERR = document.getElementById("err");
 const AVG = document.getElementById("avg");
 
-
 const MY_DATA = getTripData();
 renderTable(MY_DATA);
-
-function updateDOM(input, id) {
-  const divEl = document.querySelector(id);
-  const p = document.createElement("p");
-  p.textContent = input;
-  divEl.appendChild(p);
-}
 
 function trackMPGAndCost(miles, gallons, price = 3.79) {
   const mpg = Math.round(miles / gallons);
