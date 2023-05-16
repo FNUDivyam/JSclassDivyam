@@ -110,7 +110,6 @@ function renderEditDelBtn(tr, index) {
     FORM.gallons.value = MY_DATA[index].gallons;
     FORM.price.value = MY_DATA[index].price;
     MY_DATA.splice(index, 1);
-    saveTripData();
   });
 
   delBtn.addEventListener("click", function (e) {
