@@ -3,3 +3,8 @@
 ## fixing decimal input
 changed input type to text and removed the parseInt
 it seems to be working but not sure about this.
+
+## which dom selectors
+just before the end of renderTables()
+querySelectorAll or getElementsByTagName
+can be used, but not sure where to get the index
