@@ -1,19 +1,13 @@
-let myName: string
-let meaningOfLife: number
-let isLoading: boolean
-let album: any
+let stringArr: string[] = ['one', 'hey', 'divyam']
+let guitars: (string | number)[] = ['Strat', 'Les Paul', 5150]
+let mixedData: (string | number | boolean )[] = ['EVH', 1984, true]
 
+stringArr[0] = 'John'
+stringArr.push('hey')
 
-myName = 'divyam'
-meaningOfLife = 42
-isLoading = true
-album  = 5150
+guitars[0] = 1984
+guitars.unshift('Jim')
 
-const sum = (a: number, b: number) => {
-  return a + b
-}
-
-let postId: string | number
-let isActive: number | boolean
-
-let re: RegExp = /\w+/g
+let test = []
+let bands: string[] = []
+bands.push('Van Halen')
