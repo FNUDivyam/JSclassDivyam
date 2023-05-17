@@ -6,3 +6,12 @@
 3. can an AI be created with javascript?
 4. can ChatGPT be created with javascript?
 5. when did javascript introduce async await?
+
+## thoughts on future.
+well not sure what is going happen, wheather learning
+teach will make sense in 10 years.
+
+I'm leaning toward it won't but doesn't mean it is waste of
+time to learn it until it is 100% certain.
+even in case it becomes obsolete to learn programming, 
+it might still be a fun activity to learn it.
