@@ -1,8 +1,22 @@
 const FORM = document.getElementById("form-input")
 const ERR = document.getElementById("error")
 const OUTPUT = document.getElementById("output")
-const MY_DATA = []
 
+function getData() {
+  const dataJSON = localStorage.getItem("data");
+  if(dataJSON !== null) {
+    return JSON.parse(dataJSON)
+  } else {
+    return []
+  }
+}
+
+function saveData(data) {
+  localStorage.setItem("data", JSON.stringify(data));
+}
+
+const MY_DATA = getData()
+renderListItems(MY_DATA)
 function updateDOM(input, id) {
   const divEl = document.getElementById(id);
   const p = document.createElement("p");
@@ -58,6 +72,7 @@ function renderButtons(div, index) {
   deleteBtn.addEventListener("click", function () {
     MY_DATA.splice(index, 1)
     renderListItems(MY_DATA)
+    saveData(MY_DATA)
   });
 
   div.appendChild(editBtn)
@@ -89,7 +104,7 @@ FORM.addEventListener('submit', (e) => {
   if(isFormValid(hungerLevel)) {
     const result = shouldIEat(amIHungry, hungerLevel, foodName)
     MY_DATA.push(result)
-    //updateDOM(`amIHungry=${result.amIHungry}, hungerLevel=${result.hungerLevel}, foodName=${result.foodName}, decision=${result.decision}`, "output")
+    saveData(MY_DATA)
     renderListItems(MY_DATA)
   }
 
