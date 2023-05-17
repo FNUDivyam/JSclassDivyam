@@ -1,10 +1,8 @@
-let username = 'Divyam Lather'
-console.log(username)
+let myName: string
+let meaningOfLife: number
+let isLoading: boolean
+let album: any
 
-let a: number = 12
-let b: number = 6
-let c: number = 2
-
-console.log(a / b)
-
-console.log(c * b)
+myName = 'divyam'
+meaningOfLife = 42
+isLoading = true
